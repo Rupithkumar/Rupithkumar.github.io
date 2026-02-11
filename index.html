@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rupith Kumar N - AI Engineer </title>
+    <title>Rupith Kumar N - AI Engineer</title>
     
     <!-- Custom RK Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23667eea'/%3E%3Ctext x='50' y='70' font-family='Arial, sans-serif' font-size='55' font-weight='bold' fill='white' text-anchor='middle'%3ERK%3C/text%3E%3C/svg%3E">
@@ -623,12 +623,12 @@
         }
 
         .belief-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
         }
 
         .belief-card:hover .belief-header {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .belief-header {
@@ -794,8 +794,8 @@
         }
 
         .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
         }
 
         .info-card-title {
@@ -847,7 +847,8 @@
 
         .achievement-item:hover {
             background: linear-gradient(135deg, #dbeafe, #f3e8ff);
-            transform: translateX(10px);
+            transform: translateX(10px) translateY(-5px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
         }
 
         .achievement-icon {
@@ -889,8 +890,8 @@
         }
 
         .experience-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
         }
 
         .experience-header {
@@ -1016,8 +1017,8 @@
         }
 
         .project-card:hover {
-            transform: translateY(-10px) rotateX(2deg);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
         }
 
         .project-gradient {
@@ -1146,8 +1147,8 @@
         }
 
         .research-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 80px rgba(118, 75, 162, 0.4);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 35px 90px rgba(118, 75, 162, 0.5);
         }
 
         .research-content {
@@ -1307,6 +1308,12 @@
             box-shadow: 0 30px 80px rgba(102, 126, 234, 0.4);
             position: relative;
             overflow: hidden;
+            transition: all 0.15s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 40px 100px rgba(102, 126, 234, 0.6);
         }
 
         .contact-card::before {
@@ -1477,7 +1484,7 @@
                         }
                     }, 200);
                 }
-            }, 300); // Very fast - 60ms intervals
+            }, 400);
         })();
     </script>
 
@@ -1632,7 +1639,7 @@
                     </div>
 
                     <div style="margin-top: 2rem;">
-                        <a href="Rupith_Kumar_Resume.pdf" class="btn btn-primary" style="display: inline-flex;" id="download-resume" download="Rupithkumar_Resume">
+                        <a href="#" class="btn btn-primary" style="display: inline-flex;" id="download-resume">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                                 <polyline points="7 10 12 15 17 10"/>
@@ -2032,17 +2039,37 @@
             el.addEventListener('mouseleave', () => cursorFollower.classList.remove('active'));
         });
 
-        // Parallax Effect
+        // Extreme Parallax Effect on Mouse Move - ULTRA SMOOTH
         document.addEventListener('mousemove', (e) => {
             const mouseX = e.clientX / window.innerWidth;
             const mouseY = e.clientY / window.innerHeight;
             
+            // Floating elements parallax with multiple speeds
             document.querySelectorAll('[data-speed]').forEach(el => {
-                const speed = el.getAttribute('data-speed');
-                const x = (window.innerWidth - e.clientX * speed) / 100;
-                const y = (window.innerHeight - e.clientY * speed) / 100;
+                const speed = parseFloat(el.getAttribute('data-speed'));
+                const x = (window.innerWidth - e.clientX * speed) / 40; // Smoother movement
+                const y = (window.innerHeight - e.clientY * speed) / 40;
                 
-                el.style.transform = `translateX(${x}px) translateY(${y}px)`;
+                el.style.transform = `translate(${x}px, ${y}px)`;
+                el.style.transition = 'transform 0.1s ease-out';
+            });
+
+            // Parallax shapes with depth layers
+            document.querySelectorAll('.parallax-shape').forEach((shape, index) => {
+                const speed = (index + 1) * 0.3; // Varying speeds for depth
+                const x = (mouseX - 0.5) * speed * 60;
+                const y = (mouseY - 0.5) * speed * 60;
+                shape.style.transform = `translate(${x}px, ${y}px)`;
+                shape.style.transition = 'transform 0.15s ease-out';
+            });
+
+            // Preview cards parallax
+            document.querySelectorAll('.preview-card').forEach((card, index) => {
+                const speed = (index + 1) * 0.5;
+                const x = (mouseX - 0.5) * speed * 40;
+                const y = (mouseY - 0.5) * speed * 40;
+                card.style.transform = `translate(${x}px, ${y}px) rotate(${index % 2 ? 8 : -8}deg)`;
+                card.style.transition = 'transform 0.15s ease-out';
             });
         });
 
@@ -2084,8 +2111,8 @@
             lastScroll = currentScroll;
         });
 
-        // 3D Tilt Effect on Cards
-        document.querySelectorAll('.belief-card, .project-card, .experience-card, .info-card').forEach(card => {
+        // Enhanced Parallax & 3D Tilt Effect on Cards - SMOOTH & RESPONSIVE
+        document.querySelectorAll('.belief-card, .project-card, .experience-card, .info-card, .research-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -2094,14 +2121,41 @@
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
                 
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
+                // Calculate rotation based on mouse position (subtle)
+                const rotateX = (y - centerY) / 30; // Reduced divisor for smoother effect
+                const rotateY = (centerX - x) / 30;
                 
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+                // Apply transform with instant response
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+                card.style.transition = 'transform 0.05s ease-out'; // Ultra fast response
             });
             
             card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+                card.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'; // Smooth return
+            });
+        });
+
+        // Achievement items parallax
+        document.querySelectorAll('.achievement-item').forEach(item => {
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 40;
+                const rotateY = (centerX - x) / 40;
+                
+                item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateX(10px) translateY(-5px) scale(1.03)`;
+                item.style.transition = 'transform 0.05s ease-out';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateX(0) translateY(0) scale(1)';
+                item.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
             });
         });
 
@@ -2251,6 +2305,65 @@
             setTimeout(() => {
                 this.innerHTML = originalText;
             }, 2000);
+        });
+
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Magnetic Effect on Buttons - PREMIUM INTERACTION
+        document.querySelectorAll('.btn, .tech-tag, .research-tag').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) scale(1.05)`;
+                btn.style.transition = 'transform 0.05s ease-out';
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0) scale(1)';
+                btn.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            });
+        });
+
+        // Icon rotation on card hover
+        document.querySelectorAll('.belief-card').forEach(card => {
+            const icon = card.querySelector('.belief-icon');
+            card.addEventListener('mouseenter', () => {
+                if (icon) {
+                    icon.style.transform = 'scale(1.2) rotate(10deg)';
+                    icon.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                if (icon) {
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                }
+            });
+        });
+
+        // Ticker item bounce on hover
+        document.querySelectorAll('.ticker-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-10px) scale(1.15)';
+                item.style.transition = 'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0) scale(1)';
+                item.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            });
         });
     </script>
 </body>
