@@ -5,11 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rupith Kumar N</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://prod.spline.design" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&family=Fira+Code:wght@300;400&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzA3MDcwNyIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNDAwIgogICAgZmlsbD0iI2Y1ZjVmMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+Uks8L3RleHQ+Cjwvc3ZnPg==">
 <link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzA3MDcwNyIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNDAwIgogICAgZmlsbD0iI2Y1ZjVmMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+Uks8L3RleHQ+Cjwvc3ZnPg==">
-<script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.69/build/spline-viewer.js"></script>
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.69/build/spline-viewer.js" defer></script>
 <style>
 
 /* ════════════════════════════════════════════════════
@@ -87,7 +89,11 @@ body::-webkit-scrollbar{display:none;}
 #loader.out{opacity:0;transform:translateY(-40px);pointer-events:none;}
 
 #loader spline-viewer{
-  position:absolute;inset:0;width:100%;height:100%;
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:100%;height:100%;
+  min-width:100%;min-height:100%;
 }
 .l-vignette{
   position:absolute;inset:0;z-index:2;pointer-events:none;
@@ -146,7 +152,7 @@ body::-webkit-scrollbar{display:none;}
   z-index:800;
   display:flex;align-items:center;gap:0;
   background:rgba(7,7,7,0.55);
-  backdrop-filter:blur(24px) saturate(1.2);
+  backdrop-filter:blur(14px);
   border:1px solid var(--border);
   border-radius:99px;
   padding:0.5rem 0.6rem;
@@ -338,7 +344,8 @@ body::-webkit-scrollbar{display:none;}
 .r{
   opacity:0;
   transform:translateY(44px);
-  filter:blur(4px);
+  filter:blur(2px);
+  will-change:opacity,transform;
   transition:
     opacity  0.82s cubic-bezier(0.22,1,0.36,1),
     transform 0.82s cubic-bezier(0.22,1,0.36,1),
@@ -354,7 +361,7 @@ body::-webkit-scrollbar{display:none;}
 .r.out{
   opacity:0;
   transform:translateY(-24px);
-  filter:blur(3px);
+  filter:blur(2px);
   transition:
     opacity  0.55s cubic-bezier(0.55,0,1,0.45),
     transform 0.55s cubic-bezier(0.55,0,1,0.45),
@@ -365,7 +372,7 @@ body::-webkit-scrollbar{display:none;}
 .rx{
   opacity:0;
   transform:translateX(-36px);
-  filter:blur(4px);
+  filter:blur(2px);
   transition:
     opacity  0.82s cubic-bezier(0.22,1,0.36,1),
     transform 0.82s cubic-bezier(0.22,1,0.36,1),
@@ -373,7 +380,7 @@ body::-webkit-scrollbar{display:none;}
 }
 .rx.in{opacity:1;transform:none;filter:blur(0);}
 .rx.out{
-  opacity:0;transform:translateX(20px);filter:blur(3px);
+  opacity:0;transform:translateX(20px);filter:blur(2px);
   transition:opacity .5s ease,transform .5s ease,filter .4s ease;
 }
 
@@ -381,7 +388,8 @@ body::-webkit-scrollbar{display:none;}
 .rs{
   opacity:0;
   transform:translateY(32px) scale(0.97);
-  filter:blur(6px);
+  filter:blur(2px);
+  will-change:opacity,transform;
   transition:
     opacity  0.9s cubic-bezier(0.22,1,0.36,1),
     transform 0.9s cubic-bezier(0.22,1,0.36,1),
@@ -389,14 +397,14 @@ body::-webkit-scrollbar{display:none;}
 }
 .rs.in{opacity:1;transform:none;filter:blur(0);}
 .rs.out{
-  opacity:0;transform:translateY(-16px) scale(0.98);filter:blur(4px);
+  opacity:0;transform:translateY(-16px) scale(0.98);filter:blur(2px);
   transition:opacity .5s ease,transform .5s ease,filter .4s ease;
 }
 
 /* Stagger delays */
-.d1{transition-delay:.05s} .d2{transition-delay:.12s} .d3{transition-delay:.19s}
-.d4{transition-delay:.26s} .d5{transition-delay:.33s} .d6{transition-delay:.40s}
-.d7{transition-delay:.47s} .d8{transition-delay:.54s}
+.d1{transition-delay:.04s} .d2{transition-delay:.09s} .d3{transition-delay:.14s}
+.d4{transition-delay:.19s} .d5{transition-delay:.24s} .d6{transition-delay:.29s}
+.d7{transition-delay:.34s} .d8{transition-delay:.39s}
 /* Shorter delays for out transitions */
 .out.d1{transition-delay:.0s} .out.d2{transition-delay:.04s} .out.d3{transition-delay:.08s}
 .out.d4{transition-delay:.12s} .out.d5{transition-delay:.16s} .out.d6{transition-delay:.20s}
@@ -426,7 +434,7 @@ body::-webkit-scrollbar{display:none;}
   display:inline-flex;align-items:center;gap:1.2rem;
   margin:2rem 0;padding:1.1rem 1.6rem;
   background:rgba(245,245,243,0.04);
-  backdrop-filter:blur(16px);
+  backdrop-filter:blur(14px);
   border:1px solid rgba(245,245,243,0.1);
   border-radius:12px;
   font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;
@@ -528,8 +536,8 @@ body::-webkit-scrollbar{display:none;}
 
 .proj-card{
   background:rgba(7,7,7,0.35);
-  backdrop-filter:blur(18px) saturate(1.1);
-  -webkit-backdrop-filter:blur(18px) saturate(1.1);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
   padding:3rem;
   position:relative;overflow:hidden;
   cursor:none;
@@ -546,6 +554,20 @@ body::-webkit-scrollbar{display:none;}
   border-color:rgba(245,245,243,0.14);
 }
 .proj-card:hover::after{opacity:1;}
+
+/* Shimmer skeleton while 3D bg is loading */
+.proj-card .shimmer-layer{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 35%,rgba(245,245,243,0.04) 50%,transparent 65%);
+  background-size:250% 100%;
+  animation:cardShimmer 2s ease-in-out infinite;
+  border-radius:inherit;
+}
+@keyframes cardShimmer{
+  0%{background-position:200% 0}
+  100%{background-position:-200% 0}
+}
+.proj-card.loaded .shimmer-layer{display:none;}
 
 /* Giant background number */
 .proj-bg-num{
@@ -616,8 +638,8 @@ body::-webkit-scrollbar{display:none;}
   padding:2.8rem 2rem;text-align:center;
   border-right:1px solid rgba(245,245,243,0.07);
   background:rgba(7,7,7,0.3);
-  backdrop-filter:blur(20px) saturate(1.1);
-  -webkit-backdrop-filter:blur(20px) saturate(1.1);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
   position:relative;overflow:hidden;
   transition:background .25s, border-color .25s;
 }
@@ -650,8 +672,8 @@ body::-webkit-scrollbar{display:none;}
 }
 .res-card{
   background:rgba(7,7,7,0.28);
-  backdrop-filter:blur(20px) saturate(1.1);
-  -webkit-backdrop-filter:blur(20px) saturate(1.1);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
   padding:2.5rem;
   border:none;
   transition:background .25s;position:relative;overflow:hidden;
@@ -1056,6 +1078,7 @@ footer{
   <div class="proj-grid">
 
     <div class="proj-card rs d2">
+      <div class="shimmer-layer"></div>
       <div class="proj-bg-num">01</div>
       <div class="proj-featured">Featured · SIH 2025</div>
       <div class="proj-num">01 — Flagship Project</div>
@@ -1066,6 +1089,7 @@ footer{
     </div>
 
     <div class="proj-card rs d3">
+      <div class="shimmer-layer"></div>
       <div class="proj-bg-num">02</div>
       <div class="proj-num">02</div>
       <div class="proj-title">Humanoid Ant — TD3</div>
@@ -1075,6 +1099,7 @@ footer{
     </div>
 
     <div class="proj-card rs d4">
+      <div class="shimmer-layer"></div>
       <div class="proj-bg-num">03</div>
       <div class="proj-num">03</div>
       <div class="proj-title">Quantum Fraud Detector</div>
@@ -1084,6 +1109,7 @@ footer{
     </div>
 
     <div class="proj-card rs d3">
+      <div class="shimmer-layer"></div>
       <div class="proj-bg-num">04</div>
       <div class="proj-num">04</div>
       <div class="proj-title">200+ Language Translator</div>
@@ -1093,6 +1119,7 @@ footer{
     </div>
 
     <div class="proj-card rs d4">
+      <div class="shimmer-layer"></div>
       <div class="proj-bg-num">05</div>
       <div class="proj-num">05</div>
       <div class="proj-title">Brain Tumor MRI Detector</div>
@@ -1102,6 +1129,7 @@ footer{
     </div>
 
     <div class="proj-card rs d5">
+      <div class="shimmer-layer"></div>
       <div class="proj-bg-num">06</div>
       <div class="proj-num">06</div>
       <div class="proj-title">Face & Object Recognition</div>
@@ -1111,6 +1139,7 @@ footer{
     </div>
 
     <div class="proj-card rs d6">
+      <div class="shimmer-layer"></div>
       <div class="proj-bg-num">07</div>
       <div class="proj-num">07</div>
       <div class="proj-title">Multilingual Disease Predictor</div>
@@ -1305,8 +1334,50 @@ function mkV(url,css){
   return v;
 }
 
+/* ── LAZY SPLINE LOADER ───────────────────────────────
+   Each section model only loads when its container is
+   ~300px away from entering the viewport.
+   Hero loads immediately after the loader finishes.
+──────────────────────────────────────────────────── */
+const LAZY_MODELS = [
+  { id: 'sp-about',   url: 'https://prod.spline.design/4mvNubIh4D6Qhgjx/scene.splinecode' },
+  { id: 'sp-exp',     url: 'https://prod.spline.design/dd6ZLEMHxQO7ssGq/scene.splinecode' },
+  { id: 'sp-proj',    url: 'https://prod.spline.design/THVSSwHy1Bh31Y6g/scene.splinecode' },
+  { id: 'sp-res',     url: 'https://prod.spline.design/7mmsDJ6rNc1rjTK1/scene.splinecode' },
+  { id: 'sp-contact', url: 'https://prod.spline.design/GCwSD-iZs0a7jxBn/scene.splinecode' },
+];
+
+function initLazySpline() {
+  const lazyObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      if (el._splineLoaded) return;
+      el._splineLoaded = true;
+      const url = el.dataset.splineUrl;
+      if (!url) return;
+      const v = mkV(url, 'width:100%;height:100%;display:block;');
+      el.appendChild(v);
+      killWM(v);
+      // Mark parent section cards as loaded so shimmer stops
+      v.addEventListener('load', () => {
+        el.closest('section')?.querySelectorAll('.proj-card,.res-card,.res-stat')
+          .forEach(card => card.classList.add('loaded'));
+      });
+      lazyObs.unobserve(el);
+    });
+  }, { rootMargin: '800px 0px', threshold: 0 });
+
+  LAZY_MODELS.forEach(m => {
+    const el = document.getElementById(m.id);
+    if (!el) return;
+    el.dataset.splineUrl = m.url;
+    lazyObs.observe(el);
+  });
+}
+
 function revealSite(){
-  /* Hero 3D model */
+  /* Hero model — loads immediately, user sees it first */
   const hv=mkV(
     'https://prod.spline.design/h3Mxr7GFPHzIU5vk/scene.splinecode',
     'width:100%;height:100%;display:block;'
@@ -1314,25 +1385,29 @@ function revealSite(){
   document.getElementById('sp-hero').appendChild(hv);
   killWM(hv);
 
-  /* About bg */
-  const av=mkV('https://prod.spline.design/4mvNubIh4D6Qhgjx/scene.splinecode','width:100%;height:100%;display:block;');
-  document.getElementById('sp-about').appendChild(av);killWM(av);
+  /* Pre-warm projects + research right after hero — they're heavy */
+  /* Small delay so hero model gets bandwidth priority first */
+  setTimeout(() => {
+    const earlyIds = ['sp-proj', 'sp-res'];
+    earlyIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el || el._splineLoaded) return;
+      el._splineLoaded = true;
+      const url = el.dataset.splineUrl || LAZY_MODELS.find(m => m.id === id)?.url;
+      if (!url) return;
+      const v = mkV(url, 'width:100%;height:100%;display:block;');
+      el.dataset.splineUrl = url; // ensure set for initLazySpline guard
+      el.appendChild(v);
+      killWM(v);
+      v.addEventListener('load', () => {
+        el.closest('section')?.querySelectorAll('.proj-card,.res-card,.res-stat')
+          .forEach(card => card.classList.add('loaded'));
+      });
+    });
+  }, 1800);
 
-  /* Experience bg */
-  const ev=mkV('https://prod.spline.design/dd6ZLEMHxQO7ssGq/scene.splinecode','width:100%;height:100%;display:block;');
-  document.getElementById('sp-exp').appendChild(ev);killWM(ev);
-
-  /* Projects bg */
-  const pv=mkV('https://prod.spline.design/THVSSwHy1Bh31Y6g/scene.splinecode','width:100%;height:100%;display:block;');
-  document.getElementById('sp-proj').appendChild(pv);killWM(pv);
-
-  /* Research bg */
-  const rv=mkV('https://prod.spline.design/7mmsDJ6rNc1rjTK1/scene.splinecode','width:100%;height:100%;display:block;');
-  document.getElementById('sp-res').appendChild(rv);killWM(rv);
-
-  /* Contact bg */
-  const cv=mkV('https://prod.spline.design/GCwSD-iZs0a7jxBn/scene.splinecode','width:100%;height:100%;display:block;');
-  document.getElementById('sp-contact').appendChild(cv);killWM(cv);
+  /* About, Experience, Contact load lazily on scroll */
+  initLazySpline();
 
   /* Fade out loader */
   setTimeout(()=>{
@@ -1390,24 +1465,52 @@ function revealSite(){
 
 /* ── SCROLL REVEAL ───────────────────────────────── */
 /* Bidirectional reveal — fade in on enter, fade out on leave */
+/* Text elements — trigger when 8% visible */
 const robs = new IntersectionObserver(es => {
   es.forEach(e => {
     const el = e.target;
     if (e.isIntersecting) {
       el.classList.remove('out');
-      // Tiny rAF so browser registers removal before adding 'in'
-      requestAnimationFrame(() => el.classList.add('in'));
+      requestAnimationFrame(() => {
+        el.classList.add('in');
+        el.addEventListener('transitionend', () => {
+          el.style.willChange = 'auto';
+        }, { once: true });
+      });
     } else {
-      // Only fade out if it was already visible (has 'in')
       if (el.classList.contains('in')) {
+        el.style.willChange = 'opacity,transform';
         el.classList.remove('in');
         el.classList.add('out');
       }
     }
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -45px 0px' });
+}, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
 
-document.querySelectorAll('.r,.rx,.rs').forEach(el => robs.observe(el));
+/* Cards/boxes — trigger as soon as ANY part enters viewport */
+const cardObs = new IntersectionObserver(es => {
+  es.forEach(e => {
+    const el = e.target;
+    if (e.isIntersecting) {
+      el.classList.remove('out');
+      requestAnimationFrame(() => {
+        el.classList.add('in');
+        el.addEventListener('transitionend', () => {
+          el.style.willChange = 'auto';
+        }, { once: true });
+      });
+    } else {
+      if (el.classList.contains('in')) {
+        el.style.willChange = 'opacity,transform';
+        el.classList.remove('in');
+        el.classList.add('out');
+      }
+    }
+  });
+}, { threshold: 0.04, rootMargin: '0px 0px 0px 0px' });
+
+document.querySelectorAll('.r,.rx').forEach(el => robs.observe(el));
+document.querySelectorAll('.rs').forEach(el => cardObs.observe(el));
 
 /* ── COUNTERS ────────────────────────────────────── */
 const cobs=new IntersectionObserver(es=>{
